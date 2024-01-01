@@ -15,9 +15,9 @@ echo "Project url: $url";
 
 echo "Renaming project..."
 
-original_author="(author)"
-original_name="Prefab"
-original_url="(repo)"
+original_author="robertcoltheart"
+original_name="Kafkeasy"
+original_url="kafkeasy"
 
 for filename in $(git ls-files)
 do
@@ -26,8 +26,8 @@ do
     sed -i "s/$original_url/$url/g" $filename
 done
 
-find . -type d -exec rename "s/Prefab/${name}/g" {} +
-find . -type f -exec rename "s/Prefab/${name}/g" {} +
+find . -type d -exec rename "s/Kafkeasy/${name}/g" {} +
+find . -type f -exec rename "s/Kafkeasy/${name}/g" {} +
 
 rm -rf .github/template.yml
 rm -rf .github/workflows/rename-project.yml
