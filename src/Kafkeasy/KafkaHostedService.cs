@@ -2,10 +2,15 @@
 
 namespace Kafkeasy;
 
-internal class HostedService : IHostedService
+internal class KafkaHostedService : IHostedService
 {
     public Task StartAsync(CancellationToken cancellationToken)
     {
+        // Configure via fluent or IConfiguration
+        // Started hosted service
+        // Produce dynamically using IProducer interface
+        // ConsumerPool -> Consumer (consume loop) -> Middleware -> Observer/Handler
+
         throw new NotImplementedException();
     }
 

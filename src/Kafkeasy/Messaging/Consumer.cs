@@ -1,7 +1,7 @@
 ﻿using Confluent.Kafka;
 using Microsoft.Extensions.Logging;
 
-namespace Kafkeasy.Consume;
+namespace Kafkeasy.Messaging;
 
 internal class Consumer : IDisposable
 {

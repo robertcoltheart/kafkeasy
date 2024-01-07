@@ -3,5 +3,5 @@
 public enum AutoOffsetReset
 {
     Latest,
-    Earlist
+    Earliest
 }

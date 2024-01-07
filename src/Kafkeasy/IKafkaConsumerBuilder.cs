@@ -4,13 +4,15 @@ public interface IKafkaConsumerBuilder
 {
     IKafkaConsumerBuilder Topic(string topic);
 
+    IKafkaConsumerBuilder Topics(params string[] topics);
+
     IKafkaConsumerBuilder WithGroupId(string groupId);
 
     IKafkaConsumerBuilder SetAutoOffsetReset(AutoOffsetReset autoOffsetReset);
 
-    IKafkaConsumerBuilder DisableAutoCommit();
+    IKafkaConsumerBuilder SetAutoCommitInterval(TimeSpan interval);
 
-    IKafkaConsumerBuilder DisableAutoOffsetStore();
+    IKafkaConsumerBuilder ManuallyCompleteMessages();
 
     IKafkaConsumerBuilder UseMiddleware<T>()
         where T : IMessageMiddleware;
