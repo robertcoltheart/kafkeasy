@@ -1,6 +1,6 @@
 ﻿namespace Kafkeasy.Messaging;
 
-public class ConsumerPool
+internal class ConsumerPool
 {
     
 }

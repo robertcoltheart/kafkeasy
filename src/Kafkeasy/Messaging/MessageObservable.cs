@@ -1,6 +1,6 @@
 ﻿namespace Kafkeasy.Messaging;
 
-public class MessageObservable<T> : IObservable<T>
+internal class MessageObservable<T> : IObservable<T>
 {
     public IDisposable Subscribe(IObserver<T> observer)
     {

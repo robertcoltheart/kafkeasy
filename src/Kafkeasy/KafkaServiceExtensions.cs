@@ -1,5 +1,4 @@
-﻿using Confluent.Kafka;
-using Kafkeasy;
+﻿using Kafkeasy;
 
 namespace Microsoft.Extensions.DependencyInjection;
 

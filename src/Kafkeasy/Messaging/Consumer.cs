@@ -41,6 +41,8 @@ internal class Consumer : IDisposable
     private void EnsureConsumer()
     {
         var config = new ConsumerConfig();
+        config.EnableAutoCommit = false;
+        config.EnableAutoOffsetStore = false;
 
         var builder = new ConsumerBuilder<byte[], byte[]>(config);
         consumer = builder.Build();
