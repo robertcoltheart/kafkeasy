@@ -1,6 +1,6 @@
 ﻿namespace Kafkeasy.Messaging;
 
-public interface ICommitManager
+internal interface ICommitManager
 {
 
 }

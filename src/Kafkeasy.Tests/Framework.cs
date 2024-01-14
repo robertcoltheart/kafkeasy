@@ -1,6 +1,4 @@
-﻿using Amazon;
-using AWS.MSK.Auth;
-using Microsoft.Extensions.DependencyInjection;
+﻿using Microsoft.Extensions.DependencyInjection;
 using Xunit;
 
 namespace Kafkeasy.Tests;
@@ -12,30 +10,20 @@ public class Framework
     {
         var services = new ServiceCollection();
 
-        var generator = new AWSMSKAuthTokenGenerator();
-
-        services.AddKafka(builder =>
-        {
-            builder.AddCluster(cluster =>
-            {
-                cluster.ConfigureSecurity(options =>
-                {
-                    options.OAuthBearerTokenRefreshHandler = handler =>
-                    {
-                        try
-                        {
-                            var (token, expiryMs) =
-                                generator.GenerateAuthTokenAsync(RegionEndpoint.APSoutheast2).Result;
-
-                            handler.SetToken(token, expiryMs);
-                        }
-                        catch (Exception e)
-                        {
-                            handler.SetTokenFailure(e.ToString());
-                        }
-                    };
-                });
-            });
-        });
+        services.AddKafka(builder => builder
+            .AddCluster(cluster => cluster
+                .WithBrokers("broker1:2098", "broker2:2098")
+                .CreateTopic("my_topic")
+                .UseAWSIAMSecurity()
+                .AddProducer<AvroMessage>(producer => producer
+                    .DefaultTopic("my_topic"))
+                .AddConsumer(consumer => consumer
+                    .Topic("my_topic")
+                    .Topics("my_topic")
+                    .WithGroupId("group-id")
+                    .SetAutoCommitInterval(TimeSpan.FromSeconds(5))
+                    .SetAutoOffsetReset(AutoOffsetReset.Earliest)
+                    .ManuallyCompleteMessages())
+            ));
     }
 }
