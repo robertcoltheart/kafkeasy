@@ -1,7 +1,11 @@
-﻿namespace Kafkeasy;
+﻿using Microsoft.Extensions.DependencyInjection;
+
+namespace Kafkeasy;
 
 public interface IKafkaClusterBuilder
 {
+    IServiceCollection Services { get; }
+
     IKafkaClusterBuilder WithBrokers(params string[] brokers);
 
     IKafkaClusterBuilder CreateTopic(string topic, int? replicas = null, int? partitions = null);
