@@ -6,6 +6,8 @@ public interface IKafkaClusterBuilder
 {
     IServiceCollection Services { get; }
 
+    IKafkaClusterBuilder UseInMemoryBroker(bool enabled = true);
+
     IKafkaClusterBuilder WithBrokers(params string[] brokers);
 
     IKafkaClusterBuilder CreateTopic(string topic, int? replicas = null, int? partitions = null);
