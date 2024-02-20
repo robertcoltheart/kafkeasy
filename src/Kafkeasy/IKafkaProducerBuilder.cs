@@ -8,6 +8,8 @@ public interface IKafkaProducerBuilder
 
     IKafkaProducerBuilder DefaultTopic(string topic);
 
-    IKafkaProducerBuilder UseMiddleware<T>()
+    IKafkaConsumerBuilder UseMiddleware(Type middleware, params object?[] args);
+
+    IKafkaConsumerBuilder UseMiddleware<T>(params object?[] args)
         where T : IMessageMiddleware;
 }

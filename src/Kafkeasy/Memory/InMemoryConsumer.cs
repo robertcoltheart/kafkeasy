@@ -4,31 +4,29 @@ namespace Kafkeasy.Memory;
 
 public class InMemoryConsumer<TKey, TValue> : IConsumer<TKey, TValue>
 {
-    public Handle Handle { get; }
+    public Handle Handle { get; } = new();
 
-    public string Name { get; }
+    public string Name => "InMemoryConsumer";
 
-    public string MemberId { get; }
+    public string MemberId => string.Empty;
 
-    public List<TopicPartition> Assignment { get; }
+    public List<TopicPartition> Assignment { get; } = new();
 
-    public List<string> Subscription { get; }
+    public List<string> Subscription { get; } = new();
 
     public IConsumerGroupMetadata ConsumerGroupMetadata { get; }
 
     public void Dispose()
     {
-        throw new NotImplementedException();
     }
 
     public int AddBrokers(string brokers)
     {
-        throw new NotImplementedException();
+        return 0;
     }
 
     public void SetSaslCredentials(string username, string password)
     {
-        throw new NotImplementedException();
     }
 
     public ConsumeResult<TKey, TValue> Consume(int millisecondsTimeout)
@@ -58,57 +56,46 @@ public class InMemoryConsumer<TKey, TValue> : IConsumer<TKey, TValue>
 
     public void Unsubscribe()
     {
-        throw new NotImplementedException();
     }
 
     public void Assign(TopicPartition partition)
     {
-        throw new NotImplementedException();
     }
 
     public void Assign(TopicPartitionOffset partition)
     {
-        throw new NotImplementedException();
     }
 
     public void Assign(IEnumerable<TopicPartitionOffset> partitions)
     {
-        throw new NotImplementedException();
     }
 
     public void Assign(IEnumerable<TopicPartition> partitions)
     {
-        throw new NotImplementedException();
     }
 
     public void IncrementalAssign(IEnumerable<TopicPartitionOffset> partitions)
     {
-        throw new NotImplementedException();
     }
 
     public void IncrementalAssign(IEnumerable<TopicPartition> partitions)
     {
-        throw new NotImplementedException();
     }
 
     public void IncrementalUnassign(IEnumerable<TopicPartition> partitions)
     {
-        throw new NotImplementedException();
     }
 
     public void Unassign()
     {
-        throw new NotImplementedException();
     }
 
     public void StoreOffset(ConsumeResult<TKey, TValue> result)
     {
-        throw new NotImplementedException();
     }
 
     public void StoreOffset(TopicPartitionOffset offset)
     {
-        throw new NotImplementedException();
     }
 
     public List<TopicPartitionOffset> Commit()
@@ -128,47 +115,44 @@ public class InMemoryConsumer<TKey, TValue> : IConsumer<TKey, TValue>
 
     public void Seek(TopicPartitionOffset tpo)
     {
-        throw new NotImplementedException();
     }
 
     public void Pause(IEnumerable<TopicPartition> partitions)
     {
-        throw new NotImplementedException();
     }
 
     public void Resume(IEnumerable<TopicPartition> partitions)
     {
-        throw new NotImplementedException();
     }
 
     public List<TopicPartitionOffset> Committed(TimeSpan timeout)
     {
-        throw new NotImplementedException();
+        return new List<TopicPartitionOffset>();
     }
 
     public List<TopicPartitionOffset> Committed(IEnumerable<TopicPartition> partitions, TimeSpan timeout)
     {
-        throw new NotImplementedException();
+        return new List<TopicPartitionOffset>();
     }
 
     public Offset Position(TopicPartition partition)
     {
-        throw new NotImplementedException();
+        return new Offset();
     }
 
     public List<TopicPartitionOffset> OffsetsForTimes(IEnumerable<TopicPartitionTimestamp> timestampsToSearch, TimeSpan timeout)
     {
-        throw new NotImplementedException();
+        return new List<TopicPartitionOffset>();
     }
 
     public WatermarkOffsets GetWatermarkOffsets(TopicPartition topicPartition)
     {
-        throw new NotImplementedException();
+        return new WatermarkOffsets(new Offset(), new Offset());
     }
 
     public WatermarkOffsets QueryWatermarkOffsets(TopicPartition topicPartition, TimeSpan timeout)
     {
-        throw new NotImplementedException();
+        return new WatermarkOffsets(new Offset(), new Offset());
     }
 
     public void Close()

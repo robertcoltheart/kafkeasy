@@ -1,4 +1,5 @@
-﻿using Microsoft.Extensions.DependencyInjection;
+﻿using System.Reflection;
+using Microsoft.Extensions.DependencyInjection;
 
 namespace Kafkeasy;
 
@@ -22,4 +23,11 @@ public interface IKafkaConsumerBuilder
 
     IKafkaConsumerBuilder UseMiddleware<T>(params object?[] args)
         where T : IMessageMiddleware;
+
+    IKafkaConsumerBuilder AddHandler<T>()
+        where T : IMessageHandler;
+
+    IKafkaConsumerBuilder AddHandler<T>(IMessageHandler<T> handler);
+
+    IKafkaConsumerBuilder AddHandlersFromAssembly(Assembly assembly);
 }

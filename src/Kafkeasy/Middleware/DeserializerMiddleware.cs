@@ -13,7 +13,7 @@ public class DeserializerMiddleware<T> : IMessageMiddleware
     {
         var message = context.Message.Value as byte[];
 
-        var data = await deserializer.DeserializeAsync(message, new SerializerContext());
+        var data = await deserializer.DeserializeAsync(message, new SerializerContext()).ConfigureAwait(false);
 
         context.Message = new Message(context.Message.Key, data!);
 

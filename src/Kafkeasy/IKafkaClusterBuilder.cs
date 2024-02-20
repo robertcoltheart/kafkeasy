@@ -6,7 +6,7 @@ public interface IKafkaClusterBuilder
 {
     IServiceCollection Services { get; }
 
-    IKafkaClusterBuilder UseInMemoryBroker(bool enabled = true);
+    IKafkaClusterBuilder UseInMemoryBroker();
 
     IKafkaClusterBuilder WithBrokers(params string[] brokers);
 
