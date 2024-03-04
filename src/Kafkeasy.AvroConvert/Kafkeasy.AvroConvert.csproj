@@ -7,7 +7,7 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="AvroConvert" Version="3.4.5" />
+    <PackageReference Include="AvroConvert" Version="3.4.6" />
     <PackageReference Include="Confluent.SchemaRegistry" Version="2.3.0" />
     <PackageReference Include="Confluent.SchemaRegistry.Serdes.Avro" Version="2.3.0" />
   </ItemGroup>
